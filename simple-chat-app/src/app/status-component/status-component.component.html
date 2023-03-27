@@ -1,0 +1,9 @@
+<div>
+    <span>My status:</span>
+    <select [(ngModel)]="currentStatus" (change)="onChangeStatus(currentStatus)">
+      <option *ngFor="let status of UserStatus | keyvalue" [value]="status.value">
+        {{ status.value }}
+      </option>
+    </select>
+  </div>
+  

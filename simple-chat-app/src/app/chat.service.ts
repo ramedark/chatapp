@@ -14,6 +14,7 @@ export class ChatService {
 
   public userChanged = new Subject<number>();
   public messageReceived = new Subject<any>();
+  public myStatus = UserStatus.Online;
 
   private userMessages: { [userId: number]: any[] } = {};
 
@@ -47,5 +48,9 @@ export class ChatService {
     this.userMessages[userId] = currentChats;
 
     this.messageReceived.next({ id: userId, message: newMessage });
+  }
+
+  changeMyStatus(status: UserStatus) {
+    this.myStatus = status;
   }
 }
