@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let user of users" (click)="onUserClick(user.id)">
+      {{ user.name }} - <span [ngClass]="user.status">{{ user.status }}</span>
+    </li>
+</ul>
+  

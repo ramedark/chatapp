@@ -1,0 +1,76 @@
+body {
+    background-color: #202124;
+    color: #e8eaed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    max-width: 100vw;
+    height: 100vh;
+  }
+  
+  app-users,
+  app-chats {
+    height: 100%;
+    overflow-y: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  app-users {
+    background-color: #2c2e32;
+    width: 25%;
+    border-right: 1px solid #5f6368;
+  }
+  
+  app-chats {
+    background-color: #323639;
+    width: 75%;
+    padding-top: 0;
+    position: relative;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  li:hover {
+    background-color: #3a3d41;
+  }
+  
+  input[type='text'] {
+    padding: 0.5rem;
+    border: none;
+    background-color: #5f6368;
+    color: #e8eaed;
+    width: 100%;
+    border-radius: 0.25rem;
+  }
+  
+  button {
+    padding: 0.5rem;
+    border: none;
+    background-color: #5f6368;
+    color: #e8eaed;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #6d6f73;
+  }
+  

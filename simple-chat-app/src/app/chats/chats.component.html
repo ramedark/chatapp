@@ -1,0 +1,8 @@
+<div *ngIf="selectedUser">
+    <h2>{{ selectedUser.name }}&nbsp;{{selectedUser.status}}</h2>
+    <div *ngFor="let msg of messages">
+      <div class="message" [ngClass]="{'from-me': msg.from === 'me'}">{{ msg.text }}</div>
+    </div>
+    <input [(ngModel)]="newMessage" (keydown.enter)="onSend()" />
+    <button (click)="onSend()">Send</button>
+  </div>
