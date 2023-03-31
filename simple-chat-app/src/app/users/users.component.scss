@@ -1,19 +1,15 @@
-.user-status {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-left: 10px;
-  }
-  
-  .user-status.Online {
-    background-color: #00cc00;
-  }
-  
-  .user-status.Offline {
-    background-color: #999;
-  }
-  
-  .user-status.Busy {
-    background-color: #ff5e5e;
-  }
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+li{
+    padding: 1rem;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
