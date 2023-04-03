@@ -8,7 +8,7 @@ import { UserStatus } from './modules/user-status.enum';
 export class ChatService {
   private users = [
     { id: 1, name: 'Alice', status: UserStatus.Online },
-    { id: 2, name: 'Bob', status: UserStatus.Offline },
+    { id: 2, name: 'Bob', status: UserStatus.Online },
     { id: 3, name: 'Carol', status: UserStatus.Busy },
   ];
 
@@ -37,16 +37,16 @@ export class ChatService {
   }
 
   sendMessage(userId: number, message: string) {
+    const date = new Date();
     const user = this.users.find((u) => u.id === userId);
     if (!user) {
       return;
     }
 
-    const newMessage = { from: 'me', text: message };
+    const newMessage = { from: 'me', text: message, date };
     const currentChats = this.userMessages[userId] || [];
     currentChats.push(newMessage);
     this.userMessages[userId] = currentChats;
-
     this.messageReceived.next({ id: userId, message: newMessage });
   }
 

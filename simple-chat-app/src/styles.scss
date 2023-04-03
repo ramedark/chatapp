@@ -1,83 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
+
+$background-color: #22368C;
+$secondary-color: #464775;
+$text-color: #ffffff;
+$gray-color: #8b8cc7;
+$input-background: #f3f2f1;
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+body,html{
+  height: 100%;
+
+}
 body {
-    background-color: #1e1e1e;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.users-container {
+  background-color: $secondary-color;
+  width: 25%;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.user {
+  padding: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($secondary-color, 5%);
   }
-  
-  .container {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    height: 100vh;
+}
+
+.chats-container {
+  background-color: $background-color;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat-header {
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid $gray-color;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 1rem;
+}
+
+.chat-input {
+  display: flex;
+  background-color: $input-background;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid $gray-color;
+}
+
+input {
+  flex: 1;
+  border: none;
+  padding: 0.5rem;
+}
+
+button {
+  background-color: $gray-color;
+  border: none;
+  color: $text-color;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+// ... (other styles)
+
+.user {
+  padding: 1rem;
+  cursor: pointer;
+  &:hover {
+    background-color: darken($secondary-color, 5%);
   }
-  
-  app-users {
-    flex: 0 0 300px;
-    border-right: 1px solid #444;
-    padding-right: 1rem;
-    margin-right: 1rem;
+}
+
+// ...
+
+button {
+  background-color: $gray-color;
+  border: none;
+  color: $text-color;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: darken($gray-color, 10%);
   }
-  
-  app-chats {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    overflow-y: auto;
-  }
-  
-  li {
-    margin-bottom: 1rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  }
-  
-  input[type='text'] {
-    padding: 0.5rem;
-    border: none;
-    background-color: #333;
-    color: #fff;
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 1rem;
-    outline: none;
-  }
-  
-  button {
-    padding: 0.5rem;
-    border: none;
-    background-color: #555;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    outline: none;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #666;
-    }
-  }
-  
-  .message {
-    margin-bottom: 1rem;
-  
-    &.from-me {
-      text-align: right;
-    }
-  }
-  
+}
+
+.chat-input {
+  display: flex;
+  background-color: $input-background;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid $gray-color;
+  position: fixed;
+  bottom: 0;
+  left: 25%;
+  width: 75%;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.chat-body {
+  padding-bottom: 4rem; // Add padding to make space for the chat-input at the bottom
+}
+
+// ...

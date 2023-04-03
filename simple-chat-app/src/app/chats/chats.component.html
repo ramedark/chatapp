@@ -1,8 +1,21 @@
-<div *ngIf="selectedUser">
+<div class = "host">
+<div class="contener" *ngIf="selectedUser else loding">
     <h2>{{ selectedUser.name }}&nbsp;{{selectedUser.status}}</h2>
-    <div *ngFor="let msg of messages">
-      <div class="message" [ngClass]="{'from-me': msg.from === 'me'}">{{ msg.text }}</div>
+   <div class="messages">
+    <div [ngClass]="{'external': msg.from !== 'me'}" class="msg" *ngFor="let msg of messages">
+      <div  >{{ msg.text }}</div>
+      <div>{{msg.date?.toLocaleTimeString("nl",{
+      timeStyle: "short"  
+      })}}</div>
     </div>
+   </div>
+   
+    <div class="inputandsend">
     <input [(ngModel)]="newMessage" (keydown.enter)="onSend()" />
     <button (click)="onSend()">Send</button>
   </div>
+  </div>
+  <ng-template #loding>
+    <img src="https://erikmafait.nl/wp-content/uploads/2017/09/rbm-logo.jpg" alt="">
+  </ng-template>
+</div>
