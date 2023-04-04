@@ -1,6 +1,13 @@
 <ul>
     <li *ngFor="let user of users" (click)="onUserClick(user.id)">
-      {{ user.name }} - <span [ngClass]="user.status">{{ user.status }}</span>
+      {{ user.name }} <span class="status-bubble" [ngClass]="getStatusClass(user.status)"></span>
+      
+      <div *ngIf="user.lastMessage" class="last-message">
+        {{ user.lastMessage.content }}
+        {{user.lastMessage.date | date: 'shortTime'}}
+        <button (click)="sendHey(user.id); $event.stopPropagation()">test</button>
+      </div>
+
     </li>
-</ul>
-  
+    
+</ul>-

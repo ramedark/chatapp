@@ -13,3 +13,29 @@ li{
     cursor: pointer;
     transition: all 0.3s ease;
 }
+.last-message {
+    font-size: 0.8em;
+    color: #777;
+   overflow: hidden;
+   text-overflow: ellipsis;
+  }
+  .status-bubble {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 5px;
+  }
+  
+  .online {
+    background-color: #92C353;
+  }
+  
+  .busy {
+    background-color: #FDB913;
+  }
+  
+  .offline {
+    background-color: #9F9F9F;
+  }
+  

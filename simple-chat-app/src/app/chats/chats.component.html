@@ -5,14 +5,12 @@
    <div class="messages">
     <div [ngClass]="{'external': msg.from !== 'me'}" class="msg" *ngFor="let msg of messages">
       <div  >{{ msg.text }}</div>
-      <div>{{msg.date?.toLocaleTimeString("nl",{
-      timeStyle: "short"  
-      })}}</div>
+      <div>{{msg.date | date: 'shortTime'}}</div>
     </div>
    </div>
    
     <div class="inputandsend">
-    <input [(ngModel)]="newMessage" (keydown.enter)="onSend()" />
+    <input  placeholder="type a new message" [(ngModel)]="newMessage" (keydown.enter)="onSend()" />
     <button (click)="onSend()"><i class="fas fa-paper-plane fa-sm"></i></button>
   </div>
   </div>

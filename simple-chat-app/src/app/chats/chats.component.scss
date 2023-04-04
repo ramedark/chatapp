@@ -33,6 +33,7 @@ color: black;
     flex-direction: column-reverse;
     font-size: larger;
 }
+
 .msg{
     padding: 1rem;
     background-color:#a1a4ff88 ;
@@ -40,9 +41,11 @@ color: black;
     max-width: 400px;
     margin: 10px;
     align-self: flex-end;
+    overflow-wrap: break-word;
+
     &.external{
         align-self: flex-start;
-        background-color: whitesmoke;
+        background-color: #FFFFFF;
         color: black;
     }
 }

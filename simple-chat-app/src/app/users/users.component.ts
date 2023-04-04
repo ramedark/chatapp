@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from '../chat.service';
+import { ChatService } from '../services/chat.service';
 import { UserStatus } from '../modules/user-status.enum';
 
 @Component({
@@ -18,5 +18,21 @@ export class UsersComponent implements OnInit {
   }
   onUserClick(userId: number) {
     this.chatService.setActiveUser(userId);
+  }
+
+  getStatusClass(status: UserStatus): string {
+    switch (status) {
+      case UserStatus.Online:
+        return 'online';
+      case UserStatus.Busy:
+        return 'busy';
+      case UserStatus.Offline:
+        return 'offline';
+      default:
+        return '';
+    }
+  }
+  sendHey(userId: number) {
+    this.chatService.simulateIncomingMessage(userId, 'Hey');
   }
 }
