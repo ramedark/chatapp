@@ -16,7 +16,6 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.users = this.chatService.getUsers();
   }
-
   onUserClick(userId: number) {
     this.chatService.setActiveUser(userId);
   }

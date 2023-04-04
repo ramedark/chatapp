@@ -9,15 +9,20 @@
     height: 100%;
 
 }
+h2{
+color: black;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+}
 .inputandsend{
     
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
-    //justify-self: flex-end;
     margin-top: auto;
+    box-shadow: 4px 1px 16px 5px rgba(0, 0, 0, 0.408);
 }
 .messages{
 

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap');
 
-$background-color: #22368C;
+$background-color: #F5F5F5;
 $secondary-color: #464775;
 $text-color: #ffffff;
 $gray-color: #8b8cc7;
@@ -102,8 +102,9 @@ button {
   background-color: $gray-color;
   border: none;
   color: $text-color;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
+  font-size: 14px;
+  padding: 0.5rem 0.7rem;
+  margin-left:px ;
   cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover {
@@ -127,4 +128,10 @@ button {
   padding-bottom: 4rem; // Add padding to make space for the chat-input at the bottom
 }
 
-// ...
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 300,
+  'GRAD' 200,
+  'opsz' 48
+}

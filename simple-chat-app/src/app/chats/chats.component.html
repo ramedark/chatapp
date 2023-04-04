@@ -1,3 +1,4 @@
+
 <div class = "host">
 <div class="contener" *ngIf="selectedUser else loding">
     <h2>{{ selectedUser.name }}&nbsp;{{selectedUser.status}}</h2>
@@ -12,7 +13,7 @@
    
     <div class="inputandsend">
     <input [(ngModel)]="newMessage" (keydown.enter)="onSend()" />
-    <button (click)="onSend()">Send</button>
+    <button (click)="onSend()"><i class="fas fa-paper-plane fa-sm"></i></button>
   </div>
   </div>
   <ng-template #loding>
