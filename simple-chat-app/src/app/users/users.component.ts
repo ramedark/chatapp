@@ -35,4 +35,11 @@ export class UsersComponent implements OnInit {
   sendHey(userId: number) {
     this.chatService.simulateIncomingMessage(userId, 'Hey');
   }
+  // Update this method inside UsersComponent class
+  getFirstLetters(name: string): string {
+    const nameParts = name.split(' ');
+    const firstLetter = nameParts[0].charAt(0).toUpperCase();
+    const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+    return firstLetter + lastLetter;
+  }
 }

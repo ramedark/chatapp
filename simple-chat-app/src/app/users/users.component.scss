@@ -1,41 +1,76 @@
-
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
-li{
-    padding: 1rem;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.last-message {
-    font-size: 0.8em;
-    color: #777;
-   overflow: hidden;
-   text-overflow: ellipsis;
+
+li {
+  padding: 1rem;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .user-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+    position: relative;
+
+    &.online::after {
+      background-color: #92C353;
+    }
+
+    &.busy::after {
+      background-color: #FDB913;
+    }
+
+    &.offline::after {
+      background-color: #9F9F9F;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      top: 20px;
+      left: 20px;
+    }
   }
-  .status-bubble {
+
+  .bubble {
     display: inline-block;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     margin-left: 5px;
   }
-  
-  .online {
-    background-color: #92C353;
+
+  .last-message {
+    font-size: 0.8em;
+    color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
   }
-  
-  .busy {
-    background-color: #FDB913;
+
+  .last-message-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 0.8em;
+    color: #777;
   }
-  
-  .offline {
-    background-color: #9F9F9F;
-  }
-  
+}

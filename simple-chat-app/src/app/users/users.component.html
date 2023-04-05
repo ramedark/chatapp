@@ -1,13 +1,14 @@
 <ul>
-    <li *ngFor="let user of users" (click)="onUserClick(user.id)">
-      {{ user.name }} <span class="status-bubble" [ngClass]="getStatusClass(user.status)"></span>
-      
-      <div *ngIf="user.lastMessage" class="last-message">
-        {{ user.lastMessage.content }}
-        {{user.lastMessage.date | date: 'shortTime'}}
+  <li *ngFor="let user of users" (click)="onUserClick(user.id)">
+    <div class="user-icon {{ getStatusClass(user.status) }}">{{ getFirstLetters(user.name) }}</div>
+    <span class="bubble"></span>
+    {{ user.name }}
+    <div *ngIf="user.lastMessage" class="last-message">
+      <div class="btn">
         <button (click)="sendHey(user.id); $event.stopPropagation()">test</button>
+        {{ user.lastMessage.content }}
+        {{ user.lastMessage.date | date: 'shortTime' }}
       </div>
-
-    </li>
-    
-</ul>-
+    </div>
+  </li>
+</ul>
