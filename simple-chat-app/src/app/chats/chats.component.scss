@@ -1,62 +1,117 @@
-.host{
+:host {
     position: relative;
     height: 100%;
-}
-.contener{
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contener {
     display: flex;
     padding: 1rem;
     flex-direction: column;
     height: 100%;
-
-}
-h2{
-color: black;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    flex: 1;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  
+  h2 {
+    color: #222831;
     margin-bottom: 1rem;
     border-bottom: 1px solid #ccc;
     padding: 1rem;
-}
-.inputandsend{
-    
+  }
+  
+  .inputandsend {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto;
-    box-shadow: 4px 1px 16px 5px rgba(0, 0, 0, 0.408);
-}
-.messages{
-
-    max-height:90%;
-    font-size: larger;
+    padding: 1rem;
+    background-color: #eef0f4;
+    border-top: 1px solid #ccc;
+  }
+  
+  input {
+    flex: 1;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #dee0e4;
+    background-color: #ffffff;
+    font-size: 1rem;
+    color: #222831;
+    outline: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+    &:focus {
+      border-color: #b3b8bc;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  
+    &:hover {
+      color: #777;
+    }
+  }
+  
+  .messages {
+    max-height: 90%;
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
     font-size: larger;
-}
-
-.msg{
+    flex: 1;
+  }
+  
+  .msg {
     padding: 1rem;
-    background-color:#a1a4ff88 ;
-    border-radius: 5px;
+    background-color: #6264a7;
+    color: #ffffff;
+    border-radius: 15px;
     max-width: 400px;
     margin: 10px;
     align-self: flex-end;
     overflow-wrap: break-word;
-
-    &.external{
-        align-self: flex-start;
-        background-color: #FFFFFF;
-        color: black;
+    position: relative;
+  
+    &.external {
+      align-self: flex-start;
+      background-color: #eef0f4;
+      color: #222831;
     }
-}
-
-img{
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%,-50%);
- height: 70%;
- width: 55%;
-}
-
-
+  }
+  
+  .date {
+    font-size: 0.8em;
+    color: #999;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70%;
+    width: 55%;
+    opacity: 0.3;
+  }
+  

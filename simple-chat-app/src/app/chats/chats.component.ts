@@ -29,7 +29,6 @@ export class ChatsComponent implements OnInit {
       }
     });
   }
-
   onSend() {
     if (this.newMessage.trim()) {
       this.chatService.sendMessage(this.id, this.newMessage);
