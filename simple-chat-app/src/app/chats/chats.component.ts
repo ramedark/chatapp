@@ -35,4 +35,10 @@ export class ChatsComponent implements OnInit {
       this.newMessage = '';
     }
   }
+  getFirstLetters(name: string): string {
+    const nameParts = name.split(' ');
+    const firstLetter = nameParts[0].charAt(0).toUpperCase();
+    const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+    return firstLetter + lastLetter;
+  }
 }

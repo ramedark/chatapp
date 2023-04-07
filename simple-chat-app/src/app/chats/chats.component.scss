@@ -75,11 +75,13 @@
     overflow: auto;
     display: flex;
     flex-direction: column-reverse;
-    font-size: larger;
+    font-size: large;
     flex: 1;
   }
   
   .msg {
+    display: flex;
+    align-items: center;
     padding: 1rem;
     background-color: #6264a7;
     color: #ffffff;
@@ -94,9 +96,15 @@
       align-self: flex-start;
       background-color: #eef0f4;
       color: #222831;
+      flex-direction: row-reverse;
     }
   }
   
+  .msg-text {
+    margin: 0 10px;
+    word-wrap: break-word;
+    max-width: 85%;
+  }
   .date {
     font-size: 0.1em;
     color: #999;
@@ -114,4 +122,18 @@
     width: 55%;
     opacity: 0.3;
   }
-  
+  .external-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+  }
+  .time{
+    font-size: smaller;
+  }

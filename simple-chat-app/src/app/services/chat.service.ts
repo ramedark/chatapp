@@ -9,9 +9,9 @@ import { UserOverviewModel } from '../models/user-overview.model';
 export class ChatService {
   private users: Array<UserOverviewModel> = [
     new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Alice van de houes', UserStatus.Online),
-    new UserOverviewModel(2, 'Bob marly', UserStatus.Offline),
-    new UserOverviewModel(3, 'crl tarly', UserStatus.Busy),
+    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
+    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
+    new UserOverviewModel(3, 'Mark Rutte', UserStatus.Busy),
   ];
 
   public userChanged = new Subject<number>();

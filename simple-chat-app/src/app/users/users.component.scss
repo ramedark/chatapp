@@ -91,12 +91,23 @@ li {
 
 .last-message-content {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   font-size: 1em;
   color: #777;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  right: 0;
 }
 
+
+.last-message-text {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+}
 .last-message-time {
   font-size: 1em;
   color: #999;

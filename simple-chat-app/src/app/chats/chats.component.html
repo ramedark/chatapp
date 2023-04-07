@@ -1,17 +1,23 @@
 <div class="host">
-  <div class="contener" *ngIf="selectedUser; else loding">
+  <div class="contener" *ngIf="selectedUser; else loading">
     <h2>{{ selectedUser.name }}</h2>
+
     <div class="messages">
       <div
         [ngClass]="{ external: msg.from !== 'me' }"
         class="msg"
         *ngFor="let msg of messages"
       >
-        <div>{{ msg.date | date : "shortTime" }}</div>
-        <div>{{ msg.text }}</div>
+        <div *ngIf="msg.from !== 'me'" class="external-icon">
+          {{ getFirstLetters(selectedUser.name) }}
+        </div>
+
+        <div class="msg-text">
+          <div class="time">{{ msg.date | date : "shortTime" }}</div>
+          <div>{{ msg.text }}</div>
+        </div>
       </div>
     </div>
-
     <div class="inputandsend">
       <input
         placeholder="type a new message"
@@ -23,7 +29,7 @@
       </button>
     </div>
   </div>
-  <ng-template #loding>
+  <ng-template #loading>
     <img
       src="https://erikmafait.nl/wp-content/uploads/2017/09/rbm-logo.jpg"
       alt=""

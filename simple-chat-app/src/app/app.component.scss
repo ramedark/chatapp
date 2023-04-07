@@ -18,3 +18,18 @@ padding: 1rem;
 .messages{
     box-shadow: 10px 1px 16px 5px rgba(0, 0, 0, 0.408)
 }
+.external-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+  }
+  h3 {
+    margin-left: 11px;
+  }
