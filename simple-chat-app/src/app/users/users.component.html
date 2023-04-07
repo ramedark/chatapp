@@ -6,6 +6,7 @@
     </div>
     <div class="user-details">
       <span class="user-name">{{ user.name }}</span>
+      <button (click)="sendHey(user.id); $event.stopPropagation()">test</button>
       <div *ngIf="user.lastMessage" class="last-message">
         <div class="last-message-content">
           U:{{ user.lastMessage.content }}
