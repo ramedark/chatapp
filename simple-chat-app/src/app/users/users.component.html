@@ -1,20 +1,22 @@
-<ul>
-  <li *ngFor="let user of users" (click)="onUserClick(user.id)">
-    <div class="user-icon {{ getStatusClass(user.status) }}">
-      {{ getFirstLetters(user.name) }}
-      <i class="fas fa-check"></i>
-    </div>
-    <div class="user-details">
-      <span class="user-name">{{ user.name }}</span>
-      <button (click)="sendHey(user.id); $event.stopPropagation()">test</button>
-      <div *ngIf="user.lastMessage" class="last-message">
-        <div class="last-message-content">
-          U:{{ user.lastMessage.content }}
-          <span class="last-message-time">{{
-            user.lastMessage.date | date : "shortTime"
-          }}</span>
+<div class="user-list">
+  <ul>
+    <li *ngFor="let user of users" (click)="onUserClick(user.id)">
+      <div class="user-icon {{ getStatusClass(user.status) }}">
+        {{ user.initials }}
+        <i class="fas fa-check"></i>
+      </div>
+      <div class="user-details">
+        <span class="user-name">{{ user.name }}</span>
+        <!-- <button (click)="sendHey(user.id); $event.stopPropagation()">test</button> -->
+        <div *ngIf="user.lastMessage" class="last-message">
+          <div class="last-message-content">
+            U:{{ user.lastMessage.content }}
+            <span class="last-message-time">{{
+              user.lastMessage.date | date : "shortTime"
+            }}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>

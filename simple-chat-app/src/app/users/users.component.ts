@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.users = this.chatService.getUsers();
+    this.users.map((user) => (user.initials = this.getFirstLetters(user.name)));
   }
   onUserClick(userId: number) {
     this.chatService.setActiveUser(userId);
@@ -35,7 +36,6 @@ export class UsersComponent implements OnInit {
   sendHey(userId: number) {
     this.chatService.simulateIncomingMessage(userId, 'Hey');
   }
-  // Update this method inside UsersComponent class
   getFirstLetters(name: string): string {
     const nameParts = name.split(' ');
     const firstLetter = nameParts[0].charAt(0).toUpperCase();
