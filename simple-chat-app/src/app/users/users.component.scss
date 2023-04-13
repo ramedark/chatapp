@@ -99,8 +99,6 @@ li {
   text-overflow: ellipsis;
   right: 0;
 }
-
-
 .last-message-text {
   display: flex;
   align-items: center;
@@ -114,4 +112,34 @@ li {
   text-align: right;
   width: 100%;
   margin-bottom: 10px;
+}
+.user-list {
+  height: 900px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+@media (max-width: 767px) {
+  .user-list {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  li {
+    grid-template-columns: 30px 1fr;
+  }
+
+  .user-details {
+    grid-template-rows: auto;
+  }
+
+  .last-message {
+    display: none; // Hide the last message on small screens
+  }
+
+  .user-icon {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+  }
 }
