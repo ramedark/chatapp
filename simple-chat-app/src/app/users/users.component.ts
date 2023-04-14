@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit {
     this.users = this.chatService.getUsers();
     this.users.map((user) => (user.initials = this.getFirstLetters(user.name)));
   }
+
   onUserClick(userId: number) {
     this.chatService.setActiveUser(userId);
   }
@@ -33,13 +34,22 @@ export class UsersComponent implements OnInit {
         return '';
     }
   }
+
   sendHey(userId: number) {
     this.chatService.simulateIncomingMessage(userId, 'Hey');
   }
+
   getFirstLetters(name: string): string {
     const nameParts = name.split(' ');
     const firstLetter = nameParts[0].charAt(0).toUpperCase();
     const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     return firstLetter + lastLetter;
+  }
+
+  toggleUsersList() {
+    const usersList = document.querySelector('.users-list');
+    if (usersList) {
+      usersList.classList.toggle('show');
+    }
   }
 }

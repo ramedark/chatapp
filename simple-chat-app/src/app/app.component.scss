@@ -1,46 +1,30 @@
-.users{
-background-color: #F0F0F0;
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+}
 
-color: black;
+app-hamburger-menu {
+  display: none;
+}
 
+@media (max-width: 1000px) {
+  :host {
+    grid-template-columns: 30% 1fr;
+  }
 }
-.contener{
-    height: 100%;
-    display: grid;
-    grid-template-columns: 400px 1fr;
-}
-h4{ 
-border-bottom: 1px solid gray;
-color: black;
 
-padding: 1rem;
-}
-.messages{
-    box-shadow: 10px 1px 16px 5px rgba(0, 0, 0, 0.408)
-}
-.external-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #ccc;
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 30px;
+@media (max-width: 640px) {
+  app-users {
+    display: none;
+  }
+
+  :host {
+    display: block;
     position: relative;
   }
-  h3 {
-    margin-left: 11px;
+
+  app-hamburger-menu {
+    display: block;
   }
-  .container {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-  }
-  
-  @media (max-width: 767px) {
-    .app-container {
-      flex-direction: column;
-    }
-  }
+}
