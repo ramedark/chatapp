@@ -1,23 +1,10 @@
-<h3>PitChat</h3>
-<div class="user-list">
-  <ul>
-    <li *ngFor="let user of users" (click)="onUserClick(user.id)">
-      <div class="user-icon {{ getStatusClass(user.status) }}">
-        {{ user.initials }}
-        <i class="fas fa-check"></i>
-      </div>
-      <div class="user-details">
-        <span class="user-name">{{ user.name }}</span>
-        <!-- <button (click)="sendHey(user.id); $event.stopPropagation()">test</button> -->
-        <div *ngIf="user.lastMessage" class="last-message">
-          <div class="last-message-content">
-            U:{{ user.lastMessage.content }}
-            <span class="last-message-time">{{
-              user.lastMessage.date | date : "shortTime"
-            }}</span>
-          </div>
-        </div>
-      </div>
-    </li>
-  </ul>
+<h3>PitChat <i class="fas fa-bars"></i></h3>
+
+<div [class.show]="showUsersList" class="user-list">
+  <app-chat-overview
+    *ngFor="let user of users"
+    (click)="onUserClick(user.id)"
+    [chatName]="user.name"
+    [chatId]="user.id"
+  ></app-chat-overview>
 </div>

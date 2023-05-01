@@ -1,0 +1,167 @@
+:host {
+    display: grid;
+    grid-template-columns: 10px auto 1fr; 
+    grid-gap: 10px;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 1px;
+    cursor: pointer;
+    font-size: smaller;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      background-color: #e0e0e0;
+    }
+} 
+
+  h3 {
+    padding: 0 11px;
+  }
+  
+  .user-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    position: relative;
+  
+    .fa-check {
+      display: none;
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 5.5px;
+      z-index: 1;
+    }
+  
+    &.online {
+      &::after {
+        background-color: #92C353;
+      }
+  
+      .fa-check {
+        display: block;
+      }
+    }
+  
+    &.busy::after {
+      background-color: #FDB913;
+    }
+  
+    &.offline::after {
+      background-color: #9F9F9F;
+    }
+  
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      top: 20px;
+      left: 20px;
+    }
+  }
+  
+  .user-details {
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+  
+  .user-name {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 2px;
+  }
+  
+  .last-message {
+    font-size: 0.8em;
+    color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .last-message-content {
+    display: flex;
+    font-size: 1em;
+    color: #777;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    right: 0;
+  }
+  
+  .last-message-time {
+    font-size: 1em;
+    color: #999;
+    text-align: right;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .user-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
+  
+  .fa-bars {
+    display: none;
+  }
+  
+  @media (max-width: 767px) {
+    .fa-bars {
+      display: block;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+  
+    .user-list {
+      height: auto;
+      overflow-y: auto;
+    }
+  
+    li {
+      grid-template-columns: 10px 30px 1fr;
+    }
+  
+    .user-details {
+      grid-template-rows: auto;
+    }
+  
+    .last-message {
+      display: none;
+      font-weight: bold;
+    }
+  
+    .users-list.show {
+      display: block;
+    }
+  }
+
+  
+        .new-message-dot {
+            display: block;
+            height: 5px;
+            width: 5px;
+            background-color: #000;
+            border-radius: 50%;
+          }
+  
+  .new-message {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+  

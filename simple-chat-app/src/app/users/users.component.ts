@@ -10,6 +10,7 @@ import { UserStatus } from '../modules/user-status.enum';
 export class UsersComponent implements OnInit {
   users: any[] = [];
   UserStatus = UserStatus;
+  showUsersList: boolean = false;
 
   constructor(private chatService: ChatService) {}
 
@@ -44,12 +45,5 @@ export class UsersComponent implements OnInit {
     const firstLetter = nameParts[0].charAt(0).toUpperCase();
     const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     return firstLetter + lastLetter;
-  }
-
-  toggleUsersList() {
-    const usersList = document.querySelector('.users-list');
-    if (usersList) {
-      usersList.classList.toggle('show');
-    }
   }
 }
