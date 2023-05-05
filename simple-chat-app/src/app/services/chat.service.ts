@@ -12,30 +12,6 @@ export class ChatService {
     new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
     new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
     new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
-    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
-    new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
-    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
-    new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
-    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
-    new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
-    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
-    new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
-    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
-    new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
-    new UserOverviewModel(1, 'Bob marly', UserStatus.Online),
-    new UserOverviewModel(2, 'Frenkie de Jong', UserStatus.Offline),
-    new UserOverviewModel(3, 'franlk tarly', UserStatus.Busy),
   ];
 
   public userChanged = new Subject<number>();
@@ -71,8 +47,6 @@ export class ChatService {
     const currentChats = this.userMessages[userId] || [];
     currentChats.unshift(newMessage);
     this.userMessages[userId] = currentChats;
-
-    this.users[userId].setLastMessage(message);
 
     this.messageReceived.next({ id: userId, message: newMessage });
   }

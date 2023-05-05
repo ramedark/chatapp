@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserStatus } from '../modules/user-status.enum';
 import { Message } from '../models/message.model';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-chat-overview',
@@ -14,6 +15,8 @@ export class ChatComponent implements OnInit {
   public status: UserStatus = UserStatus.Offline;
   public lastMessage?: Message;
   public unread: boolean = false;
+
+  constructor(private chatService: ChatService) {}
 
   public get statusClass(): string {
     switch (this.status) {
@@ -38,7 +41,6 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     //todo get from service and update
     if (Math.random() > 0.5) {
-      this.lastMessage = new Message('test 123', new Date());
       this.unread = true;
     }
 
@@ -51,5 +53,12 @@ export class ChatComponent implements OnInit {
     } else {
       this.status = UserStatus.Online;
     }
+
+    this.chatService.messageReceived.subscribe((data) => {
+      if (this.chatId == data.id) {
+        this.lastMessage = data.message;
+        console.log(this.chatId, this.lastMessage);
+      }
+    });
   }
 }

@@ -1,9 +1,9 @@
 export class Message {
-  public content: string;
+  public text: string;
   public time: Date;
 
   constructor(content: string, time: Date) {
-    this.content = content;
+    this.text = content;
     this.time = time;
   }
 }

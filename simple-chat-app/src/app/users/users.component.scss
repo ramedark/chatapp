@@ -1,5 +1,19 @@
+$background-color: #F0F0F0;
+$hover-color: #e0e0e0;
+$icon-bg-color: #ccc;
+$primary-text-color: #333;
+$secondary-text-color: #777;
+$tertiary-text-color: #999;
+$new-message-color: #0078d4;
+
+@mixin userIconState($color) {
+  &::after {
+    background-color: $color;
+  }
+}
+
 :host {
-  background-color: #F0F0F0;
+  background-color: $background-color;
   color: black;
   display: flex;
   flex-direction: column;
@@ -7,14 +21,10 @@
   overflow: auto;
 }
 
-h3 {
+h3, ul {
   padding: 0 11px;
-}
-
-ul {
   list-style-type: none;
   margin: 0;
-  padding: 0;
 }
 
 li {
@@ -29,22 +39,34 @@ li {
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #e0e0e0;
+    background-color: $hover-color;
+  }
+
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #000000;
+    border-radius: 50%;
+    grid-column: 1; 
+    align-self: center;
   }
 }
 
 .user-icon {
+  @extend .user-details;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: $icon-bg-color;
   color: #fff;
   font-size: 14px;
   font-weight: bold;
   text-align: center;
   line-height: 30px;
   position: relative;
-
+  
   .fa-check {
     display: none;
     position: absolute;
@@ -56,24 +78,34 @@ li {
     z-index: 1;
   }
 
-  &.online {
+  @mixin userIconState($color) {
     &::after {
-      background-color: #92C353;
-    }
-
-    .fa-check {
-      display: block;
+      background-color: $color;
     }
   }
-
-  &.busy::after {
-    background-color: #FDB913;
+  
+  // ...
+  
+  .user-icon {
+    // ...
+    
+    &.online {
+      @include userIconState(#92C353);
+      .fa-check {
+        display: block;
+      }
+    }
+  
+    &.busy {
+      @include userIconState(#FDB913);
+    }
+  
+    &.offline {
+      @include userIconState(#9F9F9F);
+    }
+  
+    // ...
   }
-
-  &.offline::after {
-    background-color: #9F9F9F;
-  }
-
   &::after {
     content: "";
     position: absolute;
@@ -86,28 +118,21 @@ li {
   }
 }
 
-.user-details {
+.user-details, .last-message {
   display: grid;
   grid-template-rows: auto auto;
-}
-
-.user-name {
   font-size: 1em;
-  color: #333;
+  color: $primary-text-color;
   margin-bottom: 2px;
-}
-
-.last-message {
-  font-size: 0.8em;
-  color: #777;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .last-message-content {
+  @extend .last-message;
   display: flex;
   font-size: 1em;
-  color: #777;
+  color: $secondary-text-color;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -117,7 +142,7 @@ li {
 
 .last-message-time {
   font-size: 1em;
-  color: #999;
+  color: $tertiary-text-color;
   text-align: right;
   width: 100%;
   margin-bottom: 10px;
@@ -166,7 +191,6 @@ li {
 }
 
 li {
-
   position: relative;
 }
 
@@ -177,7 +201,7 @@ li {
   right: -10px;
   width: 10px;
   height: 10px;
-  background-color: #0078d4;
+  background-color: $new-message-color;
   border-radius: 50%;
 }
 
@@ -191,7 +215,6 @@ li {
   border: 0;
 }
 
-
 .user-icon .new-message-dot {
   display: none;
   position: absolute;
@@ -199,22 +222,11 @@ li {
   right: -5px;
   width: 10px;
   height: 10px;
-  background-color: #0078d4;
+  background-color: $new-message-color;
   border-radius: 50%;
   z-index: 2;
 }
 
 .unread-message .user-icon .new-message-dot {
   display: block;
-}
-
-li:before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: #000000;
-  border-radius: 50%;
-  grid-column: 1; 
-  align-self: center;
 }

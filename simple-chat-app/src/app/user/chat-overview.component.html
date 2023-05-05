@@ -7,7 +7,7 @@
   <span class="user-name">{{ chatName }}</span>
   <div class="last-message">
     <div class="last-message-content">
-      {{ lastMessage?.content ?? "Start een nieuwe chat" }}
+      {{ lastMessage?.text ?? "Start a new chat" }}
       <span class="last-message-time" *ngIf="lastMessage?.time">{{
         lastMessage?.time | date : "shortTime"
       }}</span>
