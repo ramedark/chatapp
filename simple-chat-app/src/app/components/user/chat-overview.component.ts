@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserStatus } from '../modules/user-status.enum';
-import { Message } from '../models/message.model';
-import { ChatService } from '../services/chat.service';
+import { Message } from 'src/app/models/message.model';
+import { UserStatus } from 'src/app/modules/user-status.enum';
+
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-chat-overview',

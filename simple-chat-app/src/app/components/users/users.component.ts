@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChatService } from '../services/chat.service';
-import { UserStatus } from '../modules/user-status.enum';
+import { UserStatus } from 'src/app/modules/user-status.enum';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-users',
