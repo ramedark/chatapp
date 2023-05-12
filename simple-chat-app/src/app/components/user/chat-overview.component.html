@@ -1,9 +1,16 @@
-<div class="new-message-dot"></div>
-<div class="user-icon" [class.new-message]="unread" [ngClass]="statusClass">
-  {{ initials }}
-  <i class="fas fa-check"></i>
+<div class="user-icon-wrapper">
+  <div class="new-message-dot" *ngIf="showNewMessageDot"></div>
+  <div
+    class="user-icon"
+    [class.new-message]="unread"
+    [ngClass]="statusClass"
+    (click)="onChatClick()"
+  >
+    {{ initials }}
+    <i class="fas fa-check"></i>
+  </div>
 </div>
-<div class="user-details">
+<div class="user-details" (click)="onChatClick()">
   <span class="user-name">{{ chatName }}</span>
   <div class="last-message">
     <div class="last-message-content">

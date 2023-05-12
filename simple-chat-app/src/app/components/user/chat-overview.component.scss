@@ -15,12 +15,20 @@
 }
 
 .user-icon {
+  position: relative;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   background-color: #0078d4;
   color: #fff;
-  font-size: 14px;
+  font-size: 14px;.new-message-dot {
+    display: block;
+    height: 5px;
+    width: 5px;
+    background-color: #000;
+    border-radius: 50%;
+    visibility: hidden; // Use this instead of 'display: none;'
+  }
   font-weight: bold;
   text-align: center;
   line-height: 30px;
@@ -164,8 +172,21 @@
   }
 }
 
+.user-icon-wrapper {
+  position: relative;
+  display: inline-block; 
+}
+
+.user-icon {
+  position: relative;
+  // existing styles...
+}
+
 .new-message-dot {
-  display: block;
+  position: absolute;
+  top: 50%; // centers the dot vertically
+  left: -8px; // adjust as needed, this positions the dot to the left of the user icon
+  transform: translateY(-50%); // ensures the dot is centered vertically
   height: 5px;
   width: 5px;
   background-color: #000;

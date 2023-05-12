@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Message } from 'src/app/models/message.model';
 import { UserStatus } from 'src/app/modules/user-status.enum';
 
@@ -12,10 +12,12 @@ import { ChatService } from 'src/app/services/chat.service';
 export class ChatComponent implements OnInit {
   @Input() chatName: string = '';
   @Input() chatId: number = -1;
+  @Output() newMessageSound: EventEmitter<void> = new EventEmitter<void>();
 
   public status: UserStatus = UserStatus.Offline;
   public lastMessage?: Message;
   public unread: boolean = false;
+  public showNewMessageDot: boolean = false;
 
   constructor(private chatService: ChatService) {}
 
@@ -58,8 +60,14 @@ export class ChatComponent implements OnInit {
     this.chatService.messageReceived.subscribe((data) => {
       if (this.chatId == data.id) {
         this.lastMessage = data.message;
+        this.showNewMessageDot = true;
+        this.newMessageSound.emit();
         console.log(this.chatId, this.lastMessage);
       }
     });
+  }
+
+  public onChatClick(): void {
+    this.showNewMessageDot = false;
   }
 }
