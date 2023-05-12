@@ -1,6 +1,6 @@
 :host {
   display: grid;
-  grid-template-columns: 10px auto 1fr;
+  grid-template-columns: auto 1fr;
   grid-gap: 10px;
   align-items: center;
   padding: 0.5rem;
@@ -29,8 +29,8 @@
   .fa-check {
     display: none;
     position: absolute;
-    bottom: 2px;
-    right: 2px;
+    bottom: -5px;
+    right: -5px;
     border-radius: 50%;
     color: #fff;
     font-size: 5.5px;
