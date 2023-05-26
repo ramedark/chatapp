@@ -1,5 +1,31 @@
 <h3>PitChat <i class="fas fa-bars"></i></h3>
 
+<button (click)="toggleGroupForm()">Create Group</button>
+<div *ngIf="newGroupFormVisible">
+  <!-- Update the variable name -->
+  <form [formGroup]="newGroupForm" (submit)="onSubmit()">
+    <label for="groupName">Group Name</label>
+    <input id="groupName" formControlName="groupName" type="text" required />
+    <p
+      *ngIf="
+        newGroupForm.controls['groupName'].errors &&
+        newGroupForm.controls['groupName'].dirty
+      "
+    >
+      dude username cant be empty !
+    </p>
+
+    <div formArrayName="users">
+      <div *ngFor="let user of users; let i = index">
+        <input type="checkbox" [value]="user.name" [formControlName]="i" />
+        <label>{{ user.name }}</label>
+      </div>
+    </div>
+
+    <button type="submit">Create Group</button>
+  </form>
+</div>
+
 <div [class.show]="showUsersList" class="user-list">
   <app-chat-overview
     *ngFor="let user of users"
@@ -7,4 +33,11 @@
     [chatName]="user.name"
     [chatId]="user.id"
   ></app-chat-overview>
+  <app-group-overview
+    *ngFor="let group of chatService.groups"
+    (groupSelected)="onGroupClick($event)"
+    [groupName]="group.name"
+    [groupId]="group.id"
+    [groupUserCount]="group.userIds.length"
+  ></app-group-overview>
 </div>

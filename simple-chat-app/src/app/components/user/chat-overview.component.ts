@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Message } from 'src/app/models/message.model';
 import { UserStatus } from 'src/app/modules/user-status.enum';
 
@@ -9,7 +17,7 @@ import { ChatService } from 'src/app/services/chat.service';
   templateUrl: './chat-overview.component.html',
   styleUrls: ['./chat-overview.component.scss'],
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
   @Input() chatName: string = '';
   @Input() chatId: number = -1;
   @Output() newMessageSound: EventEmitter<void> = new EventEmitter<void>();
@@ -18,6 +26,7 @@ export class ChatComponent implements OnInit {
   public lastMessage?: Message;
   public unread: boolean = false;
   public showNewMessageDot: boolean = false;
+  public messageSub!: Subscription;
 
   constructor(private chatService: ChatService) {}
 
@@ -56,15 +65,18 @@ export class ChatComponent implements OnInit {
     } else {
       this.status = UserStatus.Online;
     }
-
-    this.chatService.messageReceived.subscribe((data) => {
+    /// ask bart about it
+    this.messageSub = this.chatService.messageReceived.subscribe((data) => {
       if (this.chatId == data.id) {
         this.lastMessage = data.message;
         this.showNewMessageDot = true;
         this.newMessageSound.emit();
-        console.log(this.chatId, this.lastMessage);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.messageSub?.unsubscribe();
   }
 
   public onChatClick(): void {
