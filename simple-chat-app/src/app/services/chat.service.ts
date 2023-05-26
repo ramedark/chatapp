@@ -16,6 +16,8 @@ export class ChatService {
   ];
 
   public userChanged = new Subject<number>();
+  public groupChanged = new Subject<number>();
+
   public messageReceived = new Subject<any>();
   public myStatus = UserStatus.Online;
 

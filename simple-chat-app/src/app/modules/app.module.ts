@@ -8,20 +8,20 @@ import { CommonModule } from '@angular/common';
 import {
   ChatComponent,
   ChatsComponent,
+  GroupAndUsersComponent,
   StatusComponent,
-  UsersComponent,
 } from '../components';
 import { AppComponent } from '../app.component';
-import { GroupOverviewComponent } from '../group-overview/group-overview.component';
+import { GroupOverviewComponent } from '../components/group-overview/group-overview.component';
 
 @NgModule({
   declarations: [
-    UsersComponent,
     ChatsComponent,
     StatusComponent,
     ChatComponent,
     AppComponent,
     GroupOverviewComponent,
+    GroupAndUsersComponent,
   ],
   imports: [BrowserModule, FormsModule, CommonModule, ReactiveFormsModule],
   providers: [],

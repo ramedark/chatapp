@@ -5,11 +5,11 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { UserOverviewModel } from 'src/app/models/user-overview.model';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss'],
+  selector: 'app-GroupsAndUsers',
+  templateUrl: './GroupsAndUsers.component.html',
+  styleUrls: ['./GroupsAndUsers.component.scss'],
 })
-export class UsersComponent implements OnInit {
+export class GroupAndUsersComponent implements OnInit {
   users: UserOverviewModel[] = [];
 
   UserStatus = UserStatus;
