@@ -22,6 +22,7 @@ export class ChatService {
   public myStatus = UserStatus.Online;
 
   private userMessages: { [userId: number]: any[] } = {};
+  private groupMessages: { [groupId: number]: any[] } = {};
 
   public groups: Array<{ id: number; name: string; userIds: number[] }> = [
     { id: 0, name: 'first group', userIds: [0, 1] },
@@ -43,6 +44,10 @@ export class ChatService {
     return this.userMessages[id] ?? [];
   }
 
+  getGroupChats(groupId: number) {
+    return this.groupMessages[groupId] ?? [];
+  }
+
   setActiveUser(userId: number) {
     this.userChanged.next(userId);
   }
@@ -59,6 +64,20 @@ export class ChatService {
     this.userMessages[userId] = currentChats;
 
     this.messageReceived.next({ id: userId, message: newMessage });
+  }
+
+  sendMessageToGroup(groupId: number, message: string) {
+    const date = new Date();
+    const group = this.groups.find((g) => g.id === groupId);
+    if (!group) {
+      return;
+    }
+    const newMessage = { from: 'me', text: message, date };
+    const currentChats = this.groupMessages[groupId] || [];
+    currentChats.push(newMessage);
+    this.groupMessages[groupId] = currentChats;
+
+    this.messageReceived.next({ id: groupId, message: newMessage });
   }
 
   changeMyStatus(status: UserStatus) {
@@ -85,6 +104,7 @@ export class ChatService {
       this.simulateIncomingMessage(randomUserId, randomMessage);
     }, 10000);
   }
+
   createGroup(name: string, userIds: number[]) {
     const id = this.groups.length; // Simple id generation.
     const group = { id, name, userIds };
@@ -96,9 +116,10 @@ export class ChatService {
   }
 
   getGroup(id: number) {
-    return this.groups.find((group) => group.id == id);
+    return this.groups.find((group) => group.id === id);
   }
+
   setActiveGroup(groupId: number) {
-    // implementation details depend on your application logic
+    this.groupChanged.next(groupId);
   }
 }
