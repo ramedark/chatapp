@@ -13,6 +13,9 @@ import {
 } from '../components';
 import { AppComponent } from '../app.component';
 import { GroupOverviewComponent } from '../components/group-overview/group-overview.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '../services/in-memory-data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,8 @@ import { GroupOverviewComponent } from '../components/group-overview/group-overv
     GroupOverviewComponent,
     GroupAndUsersComponent,
   ],
-  imports: [BrowserModule, FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, CommonModule, ReactiveFormsModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService), HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
