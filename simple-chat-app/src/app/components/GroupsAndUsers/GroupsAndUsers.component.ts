@@ -80,7 +80,6 @@ export class GroupAndUsersComponent implements OnInit {
         this.newGroupForm.value.groupName as string,
         groupParticipants
       );
-      console.log(groupParticipants);
     }
   }
 

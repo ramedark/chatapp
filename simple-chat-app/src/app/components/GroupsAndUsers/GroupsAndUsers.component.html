@@ -1,5 +1,3 @@
-<h3>PitChat <i class="fas fa-bars"></i></h3>
-
 <button (click)="toggleGroupForm()">Create Group</button>
 <div *ngIf="newGroupFormVisible">
   <!-- Update the variable name -->
@@ -12,7 +10,7 @@
         newGroupForm.controls['groupName'].dirty
       "
     >
-      dude username cant be empty !
+      group name cant be empty !
     </p>
 
     <div formArrayName="users">
