@@ -68,7 +68,7 @@ export class GroupAndUsersComponent implements OnInit {
     const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     return firstLetter + lastLetter;
   }
-
+  //testt
   onSubmit() {
     if (this.newGroupForm.valid) {
       console.log(this.newGroupForm.value.users);
