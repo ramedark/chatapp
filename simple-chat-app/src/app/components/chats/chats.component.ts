@@ -10,10 +10,10 @@ export class ChatsComponent implements OnInit {
   public messages: any[] = [];
   public selectedUser: any = null;
   public newMessage = '';
-
+  private isGroup = false;
   id: number = -1;
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
     this.messages = [];
