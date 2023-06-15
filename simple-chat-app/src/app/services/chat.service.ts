@@ -25,7 +25,7 @@ export class ChatService {
   private groupMessages: { [groupId: number]: any[] } = {};
 
   public groups: Array<{ id: number; name: string; userIds: number[] }> = [
-    { id: 0, name: 'first group', userIds: [0, 1] },
+    { id: 0, name: 'first group', userIds: [3, 1] },
   ];
 
   constructor() {
@@ -102,7 +102,7 @@ export class ChatService {
       const randomUserId = Math.floor(Math.random() * this.users.length);
       const randomMessage = Math.random().toString(36).substring(7);
       this.simulateIncomingMessage(randomUserId, randomMessage);
-    }, 10000);
+    }, 1000);
   }
 
   createGroup(name: string, userIds: number[]) {

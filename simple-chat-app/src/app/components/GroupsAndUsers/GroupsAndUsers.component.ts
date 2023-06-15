@@ -28,7 +28,7 @@ export class GroupAndUsersComponent implements OnInit {
     const usersControl = this.users.map(
       (user) => new FormControl(false) as FormControl<boolean>
     );
-    // Initializne newGroupForm
+
     this.newGroupForm = new FormGroup({
       groupName: new FormControl('', [
         Validators.required,
