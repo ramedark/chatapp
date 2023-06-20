@@ -12,7 +12,9 @@ import { Chat } from 'src/app/models/chat.model';
 })
 export class GroupAndUsersComponent implements OnInit {
   public chats: Array<Chat> = [];
-  @Output() selectedChat = new EventEmitter<number>();
+
+  selectedChatId: number = -1;
+  @Output('selectedChat') selectedChatEmitter = new EventEmitter<number>();
 
   users: Chat[] = [];
   groups: Chat[] = [];
@@ -41,10 +43,6 @@ export class GroupAndUsersComponent implements OnInit {
       users: new FormArray(usersControl),
     });
     this.groups = this.chatService.getGroups();
-  }
-
-  onClickChat(chatId: number) {
-    this.selectedChat.emit(chatId);
   }
 
   getStatusClass(status: UserStatus): string {
@@ -85,6 +83,7 @@ export class GroupAndUsersComponent implements OnInit {
     this.newGroupFormVisible = !this.newGroupFormVisible;
   }
   onChatClick(chatId: number) {
-    this.selectedChat.emit(chatId);
+    this.selectedChatEmitter.emit(chatId);
+    this.selectedChatId = chatId;
   }
 }
