@@ -1,4 +1,8 @@
-<div class="group-overview" (click)="onGroupSelected()">
+<div
+  class="group-overview"
+  (click)="onGroupSelected()"
+  [class.selected]="selected"
+>
   <h4>
     {{ groupName }}
     {{ groupUserCount }}

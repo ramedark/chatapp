@@ -1,19 +1,19 @@
 <div class="host">
-  <div class="contener" *ngIf="selectedUser; else loading">
-    <h2>{{ selectedUser.name }}</h2>
+  <div class="contener" *ngIf="selectedChat; else loading">
+    <h2>{{ selectedChat.title }}</h2>
 
     <div class="messages">
       <div
         [ngClass]="{ external: msg.from !== 'me' }"
         class="msg"
-        *ngFor="let msg of messages"
+        *ngFor="let msg of selectedChat.messages"
       >
         <div *ngIf="msg.from !== 'me'" class="external-icon">
-          {{ getFirstLetters(selectedUser.name) }}
+          {{ getFirstLetters(selectedChat.title) }}
         </div>
 
         <div class="msg-text">
-          <div class="time">{{ msg.date | date : "shortTime" }}</div>
+          <div class="time">{{ msg.time | date : "shortTime" }}</div>
           <div>{{ msg.text }}</div>
         </div>
       </div>

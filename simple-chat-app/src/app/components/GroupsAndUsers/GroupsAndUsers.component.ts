@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserStatus } from 'src/app/modules/user-status.enum';
 import { ChatService } from 'src/app/services/chat.service';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { UserOverviewModel } from 'src/app/models/user-overview.model';
+import { Chat } from 'src/app/models/chat.model';
 
 @Component({
   selector: 'app-GroupsAndUsers',
@@ -10,7 +11,13 @@ import { UserOverviewModel } from 'src/app/models/user-overview.model';
   styleUrls: ['./GroupsAndUsers.component.scss'],
 })
 export class GroupAndUsersComponent implements OnInit {
-  users: UserOverviewModel[] = [];
+  public chats: Array<Chat> = [];
+
+  selectedChatId: number = -1;
+  @Output('selectedChat') selectedChatEmitter = new EventEmitter<number>();
+
+  users: Chat[] = [];
+  groups: Chat[] = [];
 
   UserStatus = UserStatus;
   showUsersList: boolean = false;
@@ -23,7 +30,7 @@ export class GroupAndUsersComponent implements OnInit {
   constructor(public chatService: ChatService) {}
 
   ngOnInit(): void {
-    this.users = this.chatService.getUsers();
+    this.users = this.chatService.getUsersChats();
     // this.users.map((user) => (user.initials = this.getFirstLetters(user.name)));
     const usersControl = this.users.map(
       (user) => new FormControl(false) as FormControl<boolean>
@@ -35,14 +42,7 @@ export class GroupAndUsersComponent implements OnInit {
       ]) as FormControl<string>,
       users: new FormArray(usersControl),
     });
-  }
-
-  onUserClick(userId: number) {
-    this.chatService.setActiveUser(userId);
-  }
-
-  onGroupClick(groupId: number) {
-    this.chatService.setActiveGroup(groupId);
+    this.groups = this.chatService.getGroups();
   }
 
   getStatusClass(status: UserStatus): string {
@@ -56,10 +56,6 @@ export class GroupAndUsersComponent implements OnInit {
       default:
         return '';
     }
-  }
-
-  sendHey(userId: number) {
-    this.chatService.simulateIncomingMessage(userId, 'Hey');
   }
 
   getFirstLetters(name: string): string {
@@ -84,6 +80,10 @@ export class GroupAndUsersComponent implements OnInit {
   }
 
   toggleGroupForm() {
-    this.newGroupFormVisible = !this.newGroupFormVisible; // Update the variable name
+    this.newGroupFormVisible = !this.newGroupFormVisible;
+  }
+  onChatClick(chatId: number) {
+    this.selectedChatEmitter.emit(chatId);
+    this.selectedChatId = chatId;
   }
 }
