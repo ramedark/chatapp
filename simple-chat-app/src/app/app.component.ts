@@ -10,6 +10,4 @@ export class AppComponent {
   onSelectedChat(chatId: number) {
     this.selectedChatId = chatId;
   }
-
-  title = 'simple-chat-app';
 }

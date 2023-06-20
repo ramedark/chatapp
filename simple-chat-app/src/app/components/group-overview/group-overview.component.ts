@@ -9,6 +9,7 @@ import { ChatService } from '../../services/chat.service';
 export class GroupOverviewComponent implements OnInit {
   @Input() groupName!: string;
   @Input() groupId!: number;
+  @Input() selected: boolean = false;
   @Input() groupUserCount!: number;
   @Output()
   groupSelected = new EventEmitter<number>();

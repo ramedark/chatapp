@@ -27,6 +27,7 @@
   <app-chat-overview
     *ngFor="let user of users"
     (click)="onChatClick(user.id)"
+    [selected]="user.id === selectedChatId"
     [chatName]="user.title"
     [chatId]="user.id"
     [lastMessage]="user.lastMessage"
@@ -39,5 +40,6 @@
     [groupName]="group.title"
     [groupId]="group.id"
     [groupUserCount]="group.users.length"
+    [selected]="group.id === selectedChatId"
   ></app-group-overview>
 </div>

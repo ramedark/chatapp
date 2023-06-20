@@ -12,8 +12,11 @@
   &:hover {
     background-color: #e4e4e4;
   }
-}
 
+.selected{
+  background: grey;
+  color: purple;
+}
 .user-icon {
   position: relative;
   width: 30px;

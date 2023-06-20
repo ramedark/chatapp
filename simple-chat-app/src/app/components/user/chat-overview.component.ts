@@ -20,6 +20,7 @@ import { ChatService } from 'src/app/services/chat.service';
 export class ChatComponent implements OnInit, OnDestroy {
   @Input() chatName: string = '';
   @Input() chatId: number = -1;
+  @Input() selected: boolean = false;
   @Input() lastMessage?: Message;
   @Output() newMessageSound: EventEmitter<void> = new EventEmitter<void>();
 
