@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 import { UserOverviewModel } from '../models/user-overview.model';
 import { UserStatus } from '../modules/user-status.enum';
@@ -7,7 +6,7 @@ import { UserStatus } from '../modules/user-status.enum';
 @Injectable({
   providedIn: 'root',
 })
-export class InMemoryDataService implements InMemoryDbService {
+export class InMemoryDataService implements InMemoryDataService {
   constructor() {}
   createDb() {
     return {

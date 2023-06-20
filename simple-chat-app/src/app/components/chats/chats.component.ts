@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Chat } from 'src/app/models/chat.model';
 import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
@@ -6,54 +7,25 @@ import { ChatService } from 'src/app/services/chat.service';
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.scss'],
 })
-export class ChatsComponent implements OnInit {
+export class ChatsComponent implements OnChanges {
   public messages: any[] = [];
-  public selectedUser: any = null;
+
+  @Input() selectedChatId?: number;
+  public selectedChat?: Chat;
   public newMessage = '';
-  private isGroup = false;
+
   id: number = -1;
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService) {}
 
-  ngOnInit(): void {
-    this.messages = [];
-
-    this.chatService.userChanged.subscribe((id) => {
-      this.id = id;
-      this.selectedUser = this.chatService.getUser(this.id);
-      this.loadMessages();
-    });
-
-    this.chatService.groupChanged.subscribe((id) => {
-      this.id = id;
-      this.selectedUser = this.chatService.getGroup(this.id);
-      this.loadMessages();
-    });
-
-    this.chatService.messageReceived.subscribe((data: any) => {
-      if (data.id == this.id) {
-        this.loadMessages();
-      }
-    });
-  }
-
-  loadMessages() {
-    if (this.selectedUser) {
-      this.messages = this.chatService.getUserChats(this.id);
-    } else {
-      this.messages = this.chatService.getGroupChats(this.id);
-    }
+  ngOnChanges() {
+    if (this.selectedChatId)
+      this.selectedChat = this.chatService.getChatById(this.selectedChatId);
   }
 
   onSend() {
-    if (this.newMessage.trim()) {
-      if (this.selectedUser) {
-        this.chatService.sendMessage(this.id, this.newMessage);
-      } else {
-        this.chatService.sendMessageToGroup(this.id, this.newMessage);
-      }
-      this.newMessage = '';
-    }
+    this.chatService.sendMessage(this.selectedChat?.id ?? -1, this.newMessage);
+    this.newMessage = '';
   }
 
   getFirstLetters(name: string): string {

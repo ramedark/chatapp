@@ -17,14 +17,5 @@ export class GroupOverviewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onGroupSelected() {
-    console.log();
-    this.groupSelected.emit(this.groupId);
-    // Fetch the users from the service and log them
-    const group = this.chatService.getGroup(this.groupId);
-    const groupUsers = group
-      ? group.userIds.map((userId) => this.chatService.getUser(userId))
-      : [];
-    console.log(groupUsers);
-  }
+  onGroupSelected() {}
 }

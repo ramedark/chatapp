@@ -1,9 +1,11 @@
 export class Message {
+  from: string;
   public text: string;
   public time: Date;
 
-  constructor(content: string, time: Date) {
-    this.text = content;
+  constructor(from: string, text: string, time: Date) {
+    this.text = text;
     this.time = time;
+    this.from = from;
   }
 }

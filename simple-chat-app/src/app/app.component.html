@@ -1,2 +1,5 @@
-<app-GroupsAndUsers></app-GroupsAndUsers>
-<app-chats></app-chats>
+<app-GroupsAndUsers
+  (selectedChat)="onSelectedChat($event)"
+></app-GroupsAndUsers>
+
+<app-chats [selectedChatId]="selectedChatId"></app-chats>
