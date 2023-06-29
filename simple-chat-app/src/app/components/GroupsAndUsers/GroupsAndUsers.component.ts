@@ -29,13 +29,12 @@ export class GroupAndUsersComponent implements OnInit {
   constructor(public chatService: ChatService) {}
 
   ngOnInit(): void {
-    this.chatService.onChatsChanged.subscribe((_) => {
-      this.chats = this.chatService.getAllChats();
+    this.chatService.getAllChats().subscribe((chats) => {
+      this.chats = chats;
     });
-    this.chats = this.chatService.getAllChats();
 
     this.users = this.chatService.getUsersChats();
-    // this.users.map((user) => (user.initials = this.getFirstLetters(user.name)));
+
     const usersControl = this.users.map(
       (user) => new FormControl(false) as FormControl<boolean>
     );
@@ -71,11 +70,10 @@ export class GroupAndUsersComponent implements OnInit {
 
   onSubmit() {
     if (this.newGroupForm.valid) {
-      console.log(this.newGroupForm.value.users);
       const groupParticipants = this.newGroupForm.value.users
         ?.map((checked, index) => (checked ? this.users[index].id : null))
         .filter((el) => el !== null) as [];
-      console.log(groupParticipants);
+
       this.chatService.createChat(
         groupParticipants,
         true,

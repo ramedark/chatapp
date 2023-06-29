@@ -11,12 +11,12 @@
   </div>
 </div>
 <div class="user-details" (click)="onChatClick()">
-  <span class="user-name">{{ chatName }} </span>
+  <span class="user-name">{{ chat.title }} </span>
   <div class="last-message">
     <div class="last-message-content">
-      {{ lastMessage?.text ?? "Start a new chat" }}
-      <span class="last-message-time" *ngIf="lastMessage?.time">{{
-        lastMessage?.time | date : "shortTime"
+      {{ chat.lastMessage?.text ?? "Start a new chat" }}
+      <span class="last-message-time" *ngIf="chat.lastMessage?.time">{{
+        chat.lastMessage?.time | date : "shortTime"
       }}</span>
     </div>
   </div>

@@ -18,16 +18,11 @@ import { ChatService } from 'src/app/services/chat.service';
   templateUrl: './chat-overview.component.html',
   styleUrls: ['./chat-overview.component.scss'],
 })
-export class ChatComponent implements OnInit, OnDestroy {
-  @Input() chatName: string = '';
+export class ChatComponent implements OnInit {
   @Input() chat: Chat;
 
-  @Input() chatId: number = -1;
-
-  @Input() lastMessage?: Message;
   @Output() newMessageSound: EventEmitter<void> = new EventEmitter<void>();
   @Input() selected: boolean = false;
-  @Input() title: string = '';
 
   public status: UserStatus = UserStatus.Offline;
 
@@ -35,11 +30,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   public showNewMessageDot: boolean = false;
   public messageSub!: Subscription;
 
-  constructor(private chatService: ChatService) {
+  constructor() {
     this.chat = new Chat(0, [], [], false);
   }
 
   public get statusClass(): string {
+    if (this.chat.isGroup) return 'hidden';
     switch (this.status) {
       case UserStatus.Online:
         return 'online';
@@ -53,7 +49,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   public get initials(): string {
-    const nameParts = this.chatName.split(' ');
+    const nameParts = this.chat.title.split(' ');
     const firstLetter = nameParts[0].charAt(0).toUpperCase();
     const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     return firstLetter + lastLetter;
@@ -74,18 +70,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     } else {
       this.status = UserStatus.Online;
     }
-    /// ask bart about it
-    this.messageSub = this.chatService.messageReceived.subscribe((data) => {
-      if (this.chatId == data.id) {
-        this.lastMessage = data.message;
-        this.showNewMessageDot = true;
-        this.newMessageSound.emit();
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.messageSub?.unsubscribe();
   }
 
   public onChatClick(): void {

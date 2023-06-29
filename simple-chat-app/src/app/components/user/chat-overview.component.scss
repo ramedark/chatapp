@@ -69,7 +69,6 @@
       z-index: 2;
     }
   }
-
   &.busy::after {
     background-color:  #FDB913
     ;
@@ -79,6 +78,9 @@
   &.offline::after {
     background-color: #9F9F9F;
     z-index: 2;
+  }
+  &.hidden::after {
+    display: none;
   }
 
   &::after {

@@ -19,6 +19,7 @@ export class ChatsComponent implements OnChanges {
   constructor(private chatService: ChatService) {}
 
   ngOnChanges() {
+
     if (this.selectedChatId)
       this.selectedChat = this.chatService.getChatById(this.selectedChatId);
   }

@@ -1,8 +1,0 @@
-<div *ngFor="let chat of chats">
-  <app-chat-overview
-    (click)="onChatClick(chat.id)"
-    [selected]="chat.id === selectedChatId"
-    [chatName]="chat.title"
-  >
-  </app-chat-overview>
-</div>

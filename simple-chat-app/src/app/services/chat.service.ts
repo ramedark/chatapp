@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, from } from 'rxjs';
 import { UserStatus } from '../modules/user-status.enum';
 import { UserOverviewModel } from '../models/user-overview.model';
 import { Chat } from '../models/chat.model';
@@ -17,13 +17,16 @@ export class ChatService {
     new UserOverviewModel(4, 'pinguen pingo', UserStatus.Busy),
   ];
   private chats = new Map<number, Chat>();
+  private $chats = new BehaviorSubject(this.getChatsAsArray());
 
   public messageReceived = new Subject<any>();
   public myStatus = UserStatus.Online;
 
-  public onChatsChanged = new Subject<void>();
-
   constructor() {
+    this.fetchChats();
+    this.randomMessage();
+  }
+  private fetchChats() {
     this.chats.set(1, new Chat(1, [this.users[0], this.users[1]], [], false));
     this.chats.set(2, new Chat(2, [this.users[1], this.users[2]], [], false));
     this.chats.set(
@@ -37,22 +40,22 @@ export class ChatService {
       )
     );
     this.chats.set(4, new Chat(4, [this.users[4], this.users[4]], [], false));
-    this.randomMessage();
+    this.$chats.next(this.getChatsAsArray());
   }
-
-  getAllChats(): Chat[] {
-    const chatsArray: Chat[] = Array.from(this.chats.values());
-    return chatsArray;
+  getAllChats(): Observable<Chat[]> {
+    return this.$chats;
   }
 
   createChat(users: UserOverviewModel[], isGroup: boolean, title?: string) {
     const id = this.chats.size + 1; // Simple id generation.
     const newChat = new Chat(id, users, [], isGroup, title);
     this.chats.set(id, newChat);
-
-    this.onChatsChanged.next();
+    this.$chats.next(this.getChatsAsArray());
   }
 
+  private getChatsAsArray(): Chat[] {
+    return Array.from(this.chats.values());
+  }
   simulateIncomingMessage(chatId: number, message: string) {
     const date = new Date();
 

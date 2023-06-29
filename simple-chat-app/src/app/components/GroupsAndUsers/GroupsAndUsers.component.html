@@ -24,25 +24,12 @@
 </div>
 
 <div [class.show]="showUsersList" class="user-list">
-  <app-chats-list></app-chats-list>
-  <!-- 
-  <app-chat-overview
-    *ngFor="let user of users"
-    (click)="onChatClick(user.id)"
-    [selected]="user.id === selectedChatId"
-    [chatName]="user.title"
-    [chatId]="user.id"
-    [lastMessage]="user.lastMessage"
-  >
-  </app-chat-overview>
-
-  <app-group-overview
-    *ngFor="let group of groups"
-    (groupSelected)="onChatClick(group.id)"
-    [groupName]="group.title"
-    [groupId]="group.id"
-    [groupUserCount]="group.users.length"
-    [selected]="group.id === selectedChatId"
-  ></app-group-overview>
-</div> -->
+  <div *ngFor="let chat of chats">
+    <app-chat-overview
+      (click)="onChatClick(chat.id)"
+      [selected]="chat.id === selectedChatId"
+      [chat]="chat"
+    >
+    </app-chat-overview>
+  </div>
 </div>
