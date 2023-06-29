@@ -8,10 +8,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Chat } from 'src/app/models/chat.model';
-import { Message } from 'src/app/models/message.model';
 import { UserStatus } from 'src/app/modules/user-status.enum';
-
-import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-chat-overview',
@@ -20,15 +17,9 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatComponent implements OnInit {
   @Input() chat: Chat;
-
-  @Output() newMessageSound: EventEmitter<void> = new EventEmitter<void>();
   @Input() selected: boolean = false;
 
   public status: UserStatus = UserStatus.Offline;
-
-  public unread: boolean = false;
-  public showNewMessageDot: boolean = false;
-  public messageSub!: Subscription;
 
   constructor() {
     this.chat = new Chat(0, [], [], false);
@@ -57,11 +48,6 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     //todo get from service and update
-    if (Math.random() > 0.5) {
-      this.unread = true;
-    }
-
-    //todo get from service and update
     const val = Math.random();
     if (val < 0.3) {
       this.status = UserStatus.Offline;
@@ -70,9 +56,5 @@ export class ChatComponent implements OnInit {
     } else {
       this.status = UserStatus.Online;
     }
-  }
-
-  public onChatClick(): void {
-    this.showNewMessageDot = false;
   }
 }
