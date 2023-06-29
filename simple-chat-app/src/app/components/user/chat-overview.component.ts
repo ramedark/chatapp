@@ -7,6 +7,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Chat } from 'src/app/models/chat.model';
 import { Message } from 'src/app/models/message.model';
 import { UserStatus } from 'src/app/modules/user-status.enum';
 
@@ -19,10 +20,14 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   @Input() chatName: string = '';
+  @Input() chat: Chat;
+
   @Input() chatId: number = -1;
-  @Input() selected: boolean = false;
+
   @Input() lastMessage?: Message;
   @Output() newMessageSound: EventEmitter<void> = new EventEmitter<void>();
+  @Input() selected: boolean = false;
+  @Input() title: string = '';
 
   public status: UserStatus = UserStatus.Offline;
 
@@ -30,7 +35,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   public showNewMessageDot: boolean = false;
   public messageSub!: Subscription;
 
-  constructor(private chatService: ChatService) {}
+  constructor(private chatService: ChatService) {
+    this.chat = new Chat(0, [], [], false);
+  }
 
   public get statusClass(): string {
     switch (this.status) {

@@ -14,7 +14,7 @@ export class GroupOverviewComponent implements OnInit {
   @Output()
   groupSelected = new EventEmitter<number>();
 
-  constructor(private chatService: ChatService) {} // inject the service here
+  constructor(private chatService: ChatService) {}
 
   ngOnInit(): void {}
 

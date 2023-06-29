@@ -10,6 +10,7 @@ import {
   ChatsComponent,
   GroupAndUsersComponent,
   StatusComponent,
+  ChatsListComponent,
 } from '../components';
 import { AppComponent } from '../app.component';
 import { GroupOverviewComponent } from '../components/group-overview/group-overview.component';
@@ -25,9 +26,17 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     GroupOverviewComponent,
     GroupAndUsersComponent,
+    ChatsListComponent,
   ],
-  imports: [BrowserModule, FormsModule, CommonModule, ReactiveFormsModule, HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService), HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

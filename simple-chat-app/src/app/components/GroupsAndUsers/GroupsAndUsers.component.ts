@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserStatus } from 'src/app/modules/user-status.enum';
 import { ChatService } from 'src/app/services/chat.service';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
-import { UserOverviewModel } from 'src/app/models/user-overview.model';
 import { Chat } from 'src/app/models/chat.model';
 
 @Component({
@@ -30,6 +29,11 @@ export class GroupAndUsersComponent implements OnInit {
   constructor(public chatService: ChatService) {}
 
   ngOnInit(): void {
+    this.chatService.onChatsChanged.subscribe((_) => {
+      this.chats = this.chatService.getAllChats();
+    });
+    this.chats = this.chatService.getAllChats();
+
     this.users = this.chatService.getUsersChats();
     // this.users.map((user) => (user.initials = this.getFirstLetters(user.name)));
     const usersControl = this.users.map(
@@ -72,9 +76,10 @@ export class GroupAndUsersComponent implements OnInit {
         ?.map((checked, index) => (checked ? this.users[index].id : null))
         .filter((el) => el !== null) as [];
       console.log(groupParticipants);
-      this.chatService.createGroup(
-        this.newGroupForm.value.groupName as string,
-        groupParticipants
+      this.chatService.createChat(
+        groupParticipants,
+        true,
+        this.newGroupForm.value.groupName as string
       );
     }
   }

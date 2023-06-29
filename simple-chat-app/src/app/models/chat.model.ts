@@ -23,7 +23,7 @@ export class Chat {
     if (this.isGroup) {
       this.title = title ?? 'group';
     } else {
-      this.title = this.users[1].name;
+      this.title = this.users[0]?.name ?? 'empty';
     }
   }
 }

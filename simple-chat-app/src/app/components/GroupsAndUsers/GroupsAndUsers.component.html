@@ -24,6 +24,8 @@
 </div>
 
 <div [class.show]="showUsersList" class="user-list">
+  <app-chats-list></app-chats-list>
+  <!-- 
   <app-chat-overview
     *ngFor="let user of users"
     (click)="onChatClick(user.id)"
@@ -42,4 +44,5 @@
     [groupUserCount]="group.users.length"
     [selected]="group.id === selectedChatId"
   ></app-group-overview>
+</div> -->
 </div>
