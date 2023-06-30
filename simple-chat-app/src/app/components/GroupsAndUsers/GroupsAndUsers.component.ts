@@ -9,10 +9,13 @@ import { Chat } from 'src/app/models/chat.model';
   templateUrl: './GroupsAndUsers.component.html',
   styleUrls: ['./GroupsAndUsers.component.scss'],
 })
+// This component responsible for displaying groups and users
 export class GroupAndUsersComponent implements OnInit {
   public chats: Array<Chat> = [];
 
   selectedChatId: number = -1;
+
+  // Emitter for the selected chat
   @Output('selectedChat') selectedChatEmitter = new EventEmitter<number>();
 
   users: Chat[] = [];
@@ -60,6 +63,7 @@ export class GroupAndUsersComponent implements OnInit {
         return '';
     }
   }
+  // Method to return a CSS class based on user status
 
   getFirstLetters(name: string): string {
     const nameParts = name.split(' ');
@@ -67,6 +71,7 @@ export class GroupAndUsersComponent implements OnInit {
     const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     return firstLetter + lastLetter;
   }
+  // Method to return first letters of a name
 
   onSubmit() {
     if (this.newGroupForm.valid) {
@@ -79,14 +84,17 @@ export class GroupAndUsersComponent implements OnInit {
         true,
         this.newGroupForm.value.groupName as string
       );
+      // Method to submit a new group form
     }
   }
 
   toggleGroupForm() {
     this.newGroupFormVisible = !this.newGroupFormVisible;
+    // Method to toggle the visibility of the new group form
   }
   onChatClick(chatId: number) {
     this.selectedChatEmitter.emit(chatId);
     this.selectedChatId = chatId;
+    // Method to handle chat selection
   }
 }

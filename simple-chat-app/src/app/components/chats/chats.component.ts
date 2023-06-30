@@ -7,6 +7,7 @@ import { ChatService } from 'src/app/services/chat.service';
   templateUrl: './chats.component.html',
   styleUrls: ['./chats.component.scss'],
 })
+// This component responsible for displaying chats and sending messages
 export class ChatsComponent implements OnChanges {
   public messages: any[] = [];
 
@@ -19,6 +20,7 @@ export class ChatsComponent implements OnChanges {
   constructor(private chatService: ChatService) {}
 
   ngOnChanges() {
+    // Method called when changes are detected
 
     if (this.selectedChatId)
       this.selectedChat = this.chatService.getChatById(this.selectedChatId);
@@ -27,6 +29,7 @@ export class ChatsComponent implements OnChanges {
   onSend() {
     this.chatService.sendMessage(this.selectedChat?.id ?? -1, this.newMessage);
     this.newMessage = '';
+    // Method to send a message
   }
 
   getFirstLetters(name: string): string {
@@ -35,4 +38,5 @@ export class ChatsComponent implements OnChanges {
     const lastLetter = nameParts[nameParts.length - 1].charAt(0).toUpperCase();
     return firstLetter + lastLetter;
   }
+  // Method to return first letters of a name
 }

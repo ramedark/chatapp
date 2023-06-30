@@ -10,7 +10,6 @@ import { Message } from '../models/message.model';
 })
 export class ChatService {
   private users: Array<UserOverviewModel> = [
-    new UserOverviewModel(0, 'Rami Drkazoni(You)', UserStatus.Online),
     new UserOverviewModel(1, 'Bob Marly', UserStatus.Online),
     new UserOverviewModel(2, 'tosty tost', UserStatus.Offline),
     new UserOverviewModel(3, 'marlen monro', UserStatus.Offline),
